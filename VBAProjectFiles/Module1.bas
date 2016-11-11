@@ -8,7 +8,6 @@ Sub AddUniqueRef()
     'for optimisation
     Application.ScreenUpdating = False
     
-    
     'starts from col 1 row 2
     a = 7
     

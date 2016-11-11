@@ -12,11 +12,11 @@ Sub Macro1(control As IRibbonControl)
 End Sub
 
 Sub createUname()
-	
-	Dim lname As String, initials As String, uname As String
-	Dim LR As Long
 
-	LR = Cells(Rows.Count, 1).End(xlUp).Row
+    Dim lname As String, initials As String, uname As String
+    Dim LR As Long
+
+    LR = Cells(Rows.Count, 1).End(xlUp).Row
  
     For b = 2 To LR Step 1
     
@@ -25,18 +25,20 @@ Sub createUname()
         
         uname = initials & lname
      
-        Cells(b, 7) = uname
-           
+             
+        Cells(b, 8) = uname
+        Cells(b, 7).FormulaR1C1 = "=SUBSTITUTE(RC[+1],"" "","""")"
     Next b
+  
     
 End Sub
 
 Sub createPw()
 
-	Dim pw As String
-	Dim LR As Long
+    Dim pw As String
+    Dim LR As Long
 
-	LR = Cells(Rows.Count, 1).End(xlUp).Row
+    LR = Cells(Rows.Count, 1).End(xlUp).Row
  
     For b = 2 To LR Step 1
         pw = "as" & Mid(Cells(b, 1), 5, 3) & Right(Cells(b, 2), 3)
@@ -44,13 +46,14 @@ Sub createPw()
          
     Next b
 
+
 End Sub
 
 Sub createEmail()
 
-Dim LR As Long
+    Dim LR As Long
 
- LR = Cells(Rows.Count, 1).End(xlUp).Row
+    LR = Cells(Rows.Count, 1).End(xlUp).Row
  
     For b = 2 To LR Step 1
     
@@ -59,17 +62,19 @@ Dim LR As Long
            
     Next b
   
+
 End Sub
 
 
 Sub prepareSheet()
 
-	LR = Cells(Rows.Count, 1).End(xlUp).Row
+    LR = Cells(Rows.Count, 1).End(xlUp).Row
 
-	Range(Cells(2, 3), Cells(LR, 4)).Select
-	Selection.Copy
-	Range("J2").Select
-	Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+    Range(Cells(2, 3), Cells(LR, 4)).Select
+    Selection.Copy
+    Range("J2").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+
 
 End Sub
 
